@@ -1,0 +1,75 @@
+% A book summary template inspired by Jan Küster's Left Sidebar CV / https://github.com/jankapunkt/latexcv
+% The following are the elements taken from said template, albeit from heading onwards was modified and made simpler or added as entirely new elements.
+
+
+
+% use to vertically center content
+% credits to: http://tex.stackexchange.com/questions/7219/how-to-vertically-center-two-images-next-to-each-other
+\newcommand{\vcenteredinclude}[1]{\begingroup
+\setbox0=\hbox{\includegraphics{#1}}%
+\parbox{\wd0}{\box0}\endgroup}
+
+% use to vertically center content
+% credits to: http://tex.stackexchange.com/questions/7219/how-to-vertically-center-two-images-next-to-each-other
+\newcommand*{\vcenteredhbox}[1]{\begingroup
+\setbox0=\hbox{#1}\parbox{\wd0}{\box0}\endgroup}
+
+% icon shortcut
+\newcommand{\icon}[3] { 							
+	\makebox(#2, #2){\textcolor{maincol}{\csname fa#1\endcsname}}
+}	
+
+% icon with text shortcut
+\newcommand{\icontext}[4]{ 						
+	\vcenteredhbox{\icon{#1}{#2}{#3}}  \hspace{2pt}  \parbox{0.9\textwidth}{\textcolor{#4}{#3}}
+}
+
+% icon with website url
+\newcommand{\iconhref}[5]{ 						
+    \vcenteredhbox{\icon{#1}{#2}{#5}}  \hspace{2pt} \href{#4}{\textcolor{#5}{#3}}
+}
+
+% icon with email link
+\newcommand{\iconemail}[5]{ 						
+    \vcenteredhbox{\icon{#1}{#2}{#5}}  \hspace{2pt} \href{mailto:#4}{\textcolor{#5}{#3}}
+}
+
+%---------------------------------------------------------
+% MODIFIED from Kuester's CV
+%---------------------------------------------------------
+% Renders a a CV section headline with a nice underline in main color.
+% param 1: section title
+\newcommand{\heading}[1] {
+	\vspace{15pt}
+	{\bf\LARGE\color{darkcol}\uppercase{#1}}\\[-4pt]
+	{\color{maincol}\rule{0.1\textwidth}{2pt} }\vspace{2pt}
+}
+
+%---------------------------------------------------------
+% New 
+%----------------------------------------------------------
+\newcommand{\titlebox}[3]
+{\fcolorbox{#1}{#2}{\begin{minipage}[c][4.5cm][c]{\linewidth}%
+\begin{center}\large\color{white} #3 %
+\end{center}\end{minipage}\\[14pt]
+\vspace{-12pt}
+}
+}
+
+\newcommand{\bigfont}[1]{%
+{\bf\huge\uppercase{#1} } \\[4pt]%
+\rule{0.1\textwidth}{1.25pt} \\[4pt]%
+}
+
+\newcommand{\titletext}[1]{%
+#1 \\[4pt] %
+\rule{0.1\textwidth}{1.25pt} \\[4pt]%
+}
+
+\renewenvironment{quote}
+               {\list{\Large\color{black!50}\faQuoteLeft\phantom{ }}{\rightmargin\leftmargin}%
+                \item\relax\Large\color{black!50}\ignorespaces}
+               {\unskip\unskip\phantom{xx}\color{black!50}\faQuoteRight\normalsize\endlist}
+           
+
+
